@@ -5,6 +5,7 @@ This was my first django project so yes it's very clunky.
 Even has some clown code where I basically make the django template engine write JS for me LOL
 
 # Instructions
+0. Refer to requirements.txt make sure you have the listed packages installed before attempting to integrate/run this
 1. Place your API Keys and credentials inside redditbridge.py and twitterbridge.py
 2. Add your multireddit and username to the initializer in redditbridge.py. The reddit Imageboard is fully customisable.
    It will add the subreddits you give it via the add form(displayed on the page) into your Multireddit. Clicking on the 
