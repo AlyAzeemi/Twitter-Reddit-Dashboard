@@ -1,0 +1,15 @@
+{% extends "view_images.html" %}
+
+{% block platform %}
+<br>
+<form action="." method="POST">{% csrf_token %}
+    <input type="text" label="r/" name="subs"/>
+    <input type="submit" value="Add">
+</form>
+<br>
+<form action="." method="POST">{% csrf_token %}
+    {% for sub in sub_list%}
+            <input class="rbutton" type="submit" name="remove" value="r/{{sub}}"/>
+    {% endfor %}
+</form>
+{% endblock %}

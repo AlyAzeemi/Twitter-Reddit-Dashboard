@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% block platform %}
+{% endblock %}
+
+<br>
+<br>
+
+<!--Automated Image Grid-->
+<div id="imageboard">
+    <div class="row">
+    <!--Use JS to populate-->
+    </div>
+</div>
+
+<script>
+    ImgArr=[];
+    {% for instance in object_list %}
+        ImgArr.push(["{{instance.post_link}}","{{instance.image_path}}"]);
+    {% endfor %}
+
+    col=[]
+    for(i=0;i<ImgArr.length;i++){
+        
+       //create <A> tag
+        a=document.createElement("a");
+        a.href=ImgArr[i][0];
+        
+        //Create Img tag
+        img=document.createElement("img");
+        img.src=ImgArr[i][1];
+        img.onerror=function(){img_not_found(this)};
+        img.width=300;
+        img.alt="";
+
+        //append <img> to <a>
+        a.appendChild(img);
+        col.push(a);
+
+        //Push array into page
+        if(col.length==4){
+
+            div=document.createElement("div");
+            div.className="column";
+
+            for(j=0;j<col.length;j++){
+                div.appendChild(col[j]);
+            }
+        
+        row=document.getElementsByClassName("row")[0];
+        row.appendChild(div);
+        
+        col=[];
+        }
+    }
+
+    function img_not_found(image){
+        image.onerror="";
+        image.src="/static/Index/page_not_found.svg";
+    }
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+

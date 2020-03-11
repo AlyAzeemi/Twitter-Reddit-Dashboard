@@ -1,0 +1,15 @@
+{% extends "view_images.html" %}
+
+{% block platform %}
+<br>
+<form action="." method="POST">{% csrf_token %}
+    <input type="text" label="@" name="handles"/>
+    <input type="submit" value="Add">
+</form>
+<br>
+<form action="." method="POST">{% csrf_token %}
+    {% for handle in handle_list%}
+            <input class="tbutton" type="submit" name="remove" value="{{handle}}"/>
+    {% endfor %}
+</form>
+{% endblock %}
